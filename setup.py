@@ -8,8 +8,11 @@ setup(
     author_email="mblonyox@gmail.com",
     description="A service to send message via Whatsapp messenger programmatically.",
     packages=find_packages(),
-    install_requires=["selenium"],
+    install_requires=["selenium", "click"],
     entry_points={
-        "console_scripts": ["wasap-cli=wasap.cli:main"]
+        "console_scripts": [
+            "wasap-cli=wasap.cli:main",
+            "wasap-service=wasap.service:main",
+        ]
     }
 )
