@@ -27,6 +27,9 @@ class Wasap():
         self.driver.quit()
 
     def select_chat(self, contact_name):
+        search_button = self.wait.until(
+            lambda x: x.find_element_by_css_selector("#side button"))
+        search_button.click()
         search_textbox = self.wait.until(
             lambda x: x.find_element_by_css_selector("#side [role=textbox]"))
         search_textbox.send_keys(contact_name)
