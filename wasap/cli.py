@@ -7,28 +7,26 @@ def main():
         while running:
             inputs = input("wasap:").split(" ")
             command = inputs[0]
-            args = inputs[1:]
+            args = " ".join(inputs[1:])
             if not command:
                 continue
-            elif command == "chat":
+            elif command == "chat" or command == "/c":
                 if not args:
                     print("No contact name argument provided.")
-                elif len(args) > 1:
-                    print("Too many arguments provided.")
                 else:
                     try:
-                        wa.select_chat(args[0])
-                    except:
-                        print("Error selecting chat.")
-            elif command == "message":
+                        wa.select_chat(args)
+                    except Exception as e:
+                        print(f"Error selecting chat. {e}")
+            elif command == "message" or command == "/m":
                 if not args:
                     print("No message argument provided.")
                 else:
                     try:
-                        wa.send_message(" ".join(args))
-                    except:
-                        print("Error sending message.")
-            elif command == "quit":
+                        wa.send_message(args)
+                    except Exception as e:
+                        print(f"Error sending message. {e}")
+            elif command == "quit" or command == "/q":
                 running = False
                 continue
             else:
