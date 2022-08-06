@@ -15,7 +15,7 @@ class Wasap():
         chrome_options.add_argument(
             f"--user-data-dir={user_data_dir or self.DEFAULT_USER_DATA_DIR}")
         self.driver = Chrome(options=chrome_options)
-        self.wait = WebDriverWait(self.driver, 60)
+        self.wait = WebDriverWait(self.driver, 600)
 
     def __enter__(self):
         self.driver.get("https://web.whatsapp.com")
