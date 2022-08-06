@@ -40,5 +40,7 @@ class Wasap():
     def send_message(self, message):
         input_textbox = self.wait.until(
             lambda x: x.find_element_by_css_selector("#main [role=textbox]"))
-        input_textbox.send_keys(message)
+        for line in message.split("\n"):
+            input_textbox.send_keys(line)
+            input_textbox.send_keys(Keys.SHIFT + Keys.ENTER)
         input_textbox.send_keys(Keys.ENTER)
